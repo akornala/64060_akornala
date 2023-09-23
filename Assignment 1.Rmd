@@ -1,0 +1,47 @@
+---
+title: "Assignment 1"
+author: "Akhil Kornala"
+date: "2023-09-23"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=TRUE}
+knitr::opts_chunk$set(echo = TRUE, comment=NA)
+```
+
+1. For this assignment I used the Best Batsman of IPL data, which included both quantitative and qualitative variables. 
+Dataset Source: https://www.kaggle.com/datasets/yaranathakur/ipl-all-time-best-batsman
+
+```{r}
+library(readr)
+Batsman <- read_csv("C:/Users/LENOVO/Desktop/Courses/FML/archive/All-Time-Best-Batsman.csv")
+View(Batsman)
+
+```
+
+2. Descriptive Statistics for the variables "Player" and "Runs Scored"
+```{r}
+summary(Batsman[,c('Player','Runs')])
+```
+
+3. Transforming the "Runs" variable into Square Root
+```{r}
+square_runs <- (Batsman$Runs)^(1/2)
+square_runs
+```
+
+4. Plotting the variables "Innings Played" and "Runs Scored" against each other
+```{r}
+plot(Batsman$Inns, Batsman$Runs, main= "Innings Played vs. Runs Scored", xlab='Inns', ylab='Runs')
+```
+
+5. Scatter Plot for the variables "Innings Playes" and "Runs Scored"
+```{r}
+library(ggplot2)
+ggplot(data=Batsman, aes(x= Inns,y=Runs))+ geom_point(color = "red", size = 2) +
+  labs(title = "Scatter Plot of Innings Played vs. Runs Scored")
+```
+
+
